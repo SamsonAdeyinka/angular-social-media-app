@@ -1,6 +1,6 @@
 <div class="reg-form">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <form class="mw-50">
+    <div class="h-100 d-flex align-items-center c">
+        <form class="form-scale">
             <div class="text-center mb-5">
                 <h1>Register Here</h1>
             </div>
@@ -26,7 +26,14 @@
                 <label for="inputPassword">Password</label>
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password" #password="ngModel" [(ngModel)]="user.password">
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <div class="form-inline">
+                <button type="submit" class="btn btn-primary">Register</button>
+                <div class="ml-3 pt-3 align-items-center">
+                    <a href="/login">
+                        <p>Sign In</p>
+                    </a>
+                </div>
+            </div>
         </form>
     </div>
 </div>
