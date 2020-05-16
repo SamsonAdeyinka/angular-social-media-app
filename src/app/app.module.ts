@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileSidebarComponent } from './components/home/profile-sidebar/profile-sidebar.component';
+import { TimelineComponent } from './components/home/timeline/timeline.component';
 
 
 
@@ -12,7 +13,8 @@ import { ProfileSidebarComponent } from './components/home/profile-sidebar/profi
   declarations: [
     AppComponent,
     RoutingComponents,
-    ProfileSidebarComponent
+    ProfileSidebarComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
