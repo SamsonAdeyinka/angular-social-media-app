@@ -10,6 +10,8 @@ export class TimelineComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+  comingsoon: string = "assets/images/insert_img.png"
 
 }

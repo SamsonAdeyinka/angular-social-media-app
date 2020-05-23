@@ -1,0 +1,44 @@
+.timeline-textbox {
+    background-color: brown;
+    height: 100vh;
+}
+
+.tweetbtn button {
+    border-radius: 20px;
+    width: 145px;
+    height: 45px;
+}
+
+.post {
+    width: 100%;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+.user {
+    width: 100%;
+    height: 50px;
+    background-color: aquamarine;
+    border-radius: 10px 10px 0 0;
+}
+
+.user-image {
+    width: 50px;
+    height: 50px;
+}
+
+#profile-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.post-date {
+    font-size: 10px;
+}
+
+.action {
+    margin: 10px;
+}
+.content { 
+    margin: ;
+}

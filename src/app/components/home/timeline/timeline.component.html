@@ -1,18 +1,45 @@
 <div class="container w-100">
-    <div class="timeline-textbox">
-        <div class="tweetbox">
+    <div class="timeline-textbox p-3">
+        <div class="tweetbox-form">
             <form>
-                <div class="form-group">
-                    <textarea class="form-control" id="twwet" rows="3" placeholder="What's happening...?"></textarea>
-                    <div class="tweetbtn">
+                <div class="form-group flex-column">
+                    <div class="tweetbox">
+                        <textarea class="form-control mb-2" id="twwet" rows="2" placeholder="What's happening...?"></textarea>
+                    </div>
+                    <div class="tweetbtn d-flex justify-content-end">
                         <button class="btn btn-primary" type="submit">Send</button>
                     </div>
                 </div>
             </form>
         </div>
-        
-    </div>
-    <div class="timeline">
-
+        <div class="timeline container w-100">
+            <div class="post">
+                <div class="user d-flex align-items-center">
+                    <div class="user-image">
+                        <img id="profile-pic" src="{{ comingsoon }}" alt="">
+                    </div>
+                    <div class="user-info m-3">
+                        <div class="user-name">Samson Adeyinka</div>
+                        <div class="post-date">18/05/20</div>
+                    </div>
+                    <div class="d-flex ml-auto">
+                        <div class="action">likes</div>
+                        <div class="action">comment</div>
+                        <div class="action">share</div>
+                    </div>
+                </div>
+                <div class="content pt-4 pb-2 px-5">
+                    <p>this is the first test. hello world!
+                        this is the first test. hello world!
+                        this is the first test. hello world!
+                        this is the first test. hello world!
+                        this is the first test. hello world!
+                        this is the first test. hello world!
+                        this is the first test. hello world!
+                        this is the first test. hello world!
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
