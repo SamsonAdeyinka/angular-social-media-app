@@ -1,24 +1,35 @@
+/* Colour codes:
+RED-ISH 
+rgb(147, 38, 38, 0.938)
+
+BLUE-ISH 
+rgb(73, 132, 157)
+rgb(11, 96, 132)
+*/
+
+
 .timeline-textbox {
-    background-color: brown;
+    background-color: white;
     height: 100vh;
 }
 
 .tweetbtn button {
-    border-radius: 20px;
+    border-radius: 15px;
     width: 145px;
     height: 45px;
 }
 
 .post {
     width: 100%;
-    background-color: grey;
+    background-color: rgb(73, 132, 157);
     border-radius: 10px;
 }
 
 .user {
     width: 100%;
     height: 50px;
-    background-color: aquamarine;
+    background-color: rgb(11, 96, 132);
+    color: white;
     border-radius: 10px 10px 0 0;
 }
 
