@@ -1,0 +1,23 @@
+.profile-sidebar {
+    width: 400px;
+    background-color: darkred;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0;
+}
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.follow-btn button{
+    width: 150px;
+    height: 50px;
+    /* background-color: darkred; */
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px;
+}
+.settings {
+    font-size: 12px;
+}
