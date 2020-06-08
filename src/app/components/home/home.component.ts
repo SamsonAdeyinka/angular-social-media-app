@@ -11,5 +11,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  comingsoon: string = "assets/images/insert_img.png"
 
 }
