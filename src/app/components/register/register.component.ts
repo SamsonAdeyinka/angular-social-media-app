@@ -14,20 +14,8 @@ export class RegisterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.resetForm();
   }
 
-  resetForm(form?: NgForm) {
-    if (form != null) {
-      form.reset();
-      this.user = {
-        username: '',
-        email: '',
-        firstname: '',
-        lastname: '',
-        password: ''
-      }
-    }
-  }
+  userModel = new User("", "", "", "", "")
 
 }
