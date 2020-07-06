@@ -1,33 +1,36 @@
+{{ userModel | json }}
 <div class="reg-form">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <form class="form-scale" #userForm="ngForm">
-            {{ userForm.value | json }}
-
-            {{ userModel | json }}
+        <form class="form-scale">
             <div class="text-center mb-5">
                 <h1>Register Here</h1>
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="inputFirstname">Firstname</label>
-                <input type="text"  class="form-control" placeholder="Firstname" name="Firstname" #firstname="ngModel" [(ngModel)]="userModel.Firstname">
+                    <input type="text" class="form-control" placeholder="Firstname" name="Firstname" required
+                        #firstname="ngModel" [class.is-invalid]="firstname.invalid && firstname.touched" [(ngModel)]="userModel.Firstname">
                 </div>
                 <div class="form-group col-6">
                     <label for="inputLastname">Lastname</label>
-                    <input type="text" class="form-control"  placeholder="Lastname" name="Lastname" #lastname="ngModel" [(ngModel)]="userModel.Lastname">
+                    <input type="text" class="form-control"  placeholder="Lastname" name="Lastname" required
+                        #lastname="ngModel" [class.is-invalid]="lastname.invalid && lastname.touched" [(ngModel)]="userModel.Lastname">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control"  placeholder="Email" name="Email" #email="ngModel" [(ngModel)]="userModel.Email">
+                <input type="email" class="form-control"  placeholder="Email" name="Email" required
+                    #email="ngModel" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="userModel.Email">
             </div>
             <div class="form-group">
                 <label for="inputUsername">Username</label> 
-                <input type="text" class="form-control"  placeholder="Username" name="Username" #username="ngModel" [(ngModel)]="userModel.Username">
+                <input type="text" class="form-control"  placeholder="Username" name="Username" required
+                    #username="ngModel" [class.is-invalid]="username.invalid && username.touched" [(ngModel)]="userModel.Username">
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" class="form-control"  placeholder="Password" name="Password" #password="ngModel" [(ngModel)]="userModel.Password">
+                <input type="password" class="form-control"  placeholder="Password" name="Password" required
+                    #password="ngModel" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="userModel.Password">
             </div>
             <div class="form-inline">
                 <button type="submit" class="btn btn-primary">Register</button>
