@@ -9,28 +9,36 @@
                 <div class="form-group col-6">
                     <label for="inputFirstname">Firstname</label>
                     <input type="text" class="form-control" placeholder="Firstname" name="Firstname" required
-                        #firstname="ngModel" [class.is-invalid]="firstname.invalid && firstname.touched" [(ngModel)]="userModel.Firstname">
+                        #firstname="ngModel" [(ngModel)]="userModel.Firstname" [class.is-invalid]="firstname.invalid && firstname.touched"
+                        [class.is-valid]="firstname.valid">
                 </div>
                 <div class="form-group col-6">
                     <label for="inputLastname">Lastname</label>
-                    <input type="text" class="form-control"  placeholder="Lastname" name="Lastname" required
-                        #lastname="ngModel" [class.is-invalid]="lastname.invalid && lastname.touched" [(ngModel)]="userModel.Lastname">
+                    <input type="text" class="form-control" placeholder="Lastname" name="Lastname" required
+                        #lastname="ngModel" [(ngModel)]="userModel.Lastname" [class.is-invalid]="lastname.invalid && lastname.touched"
+                        [class.is-valid]="lastname.valid">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control"  placeholder="Email" name="Email" required
-                    #email="ngModel" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="userModel.Email">
+                <input type="email" class="form-control" placeholder="Email" name="Email" required #email="ngModel"
+                    [(ngModel)]="userModel.Email" [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid">
             </div>
             <div class="form-group">
-                <label for="inputUsername">Username</label> 
-                <input type="text" class="form-control"  placeholder="Username" name="Username" required
-                    #username="ngModel" [class.is-invalid]="username.invalid && username.touched" [(ngModel)]="userModel.Username">
+                <label for="inputUsername">Username</label>
+                <input type="text" class="form-control" placeholder="Username" name="Username" pattern="" required
+                    #username="ngModel" [(ngModel)]="userModel.Username" [class.is-invalid]="username.invalid && username.touched"
+                    [class.is-valid]="username.valid">
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" class="form-control"  placeholder="Password" name="Password" required
-                    #password="ngModel" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="userModel.Password">
+                <input type="password" class="form-control" placeholder="Password" name="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}" required
+                    #password="ngModel" [(ngModel)]="userModel.Password" [class.is-invalid]="password.invalid && password.touched" [class.is-valid]="password.valid">
+                <div *ngIf="password.errors">
+                    <small class="text-danger" *ngIf="password.errors.pattern">
+                        Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters!
+                    </small>
+                </div>
             </div>
             <div class="form-inline">
                 <button type="submit" class="btn btn-primary">Register</button>
