@@ -1,7 +1,7 @@
 {{ userModel | json }}
 <div class="reg-form">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <form class="form-scale">
+        <form class="form-scale" (ngSubmit)="onSubmit()" novalidate>
             <div class="text-center mb-5">
                 <h1>Register Here</h1>
             </div>
