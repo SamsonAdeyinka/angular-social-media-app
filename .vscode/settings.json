@@ -1,3 +1,7 @@
 {
-    "python.pythonPath": "C:\\Users\\Samso\\.virtualenvs\\social-media-python-DqIQYOgz\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\Samso\\.virtualenvs\\python-api-ShpqhKkq\\Scripts\\python.exe",
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask"
+    ]
 }
