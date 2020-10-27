@@ -19,12 +19,12 @@ class Users(db.Model):
     password = db.Column(db.String(255), nullable=False)
     user = db.relationship('Post', backref=db.backref('user', lazy=True))
 
-    def __repr__(self):
-        return ''.join([
-            'User: ', self.firstname, ' ', self.lastname, '\r\n',
-            'Username: ', self.username, '\r\n',
-            'Email: ', self.email, '\r\n'
-        ])
+#     def __repr__(self):
+#         return ''.join([
+#             'User: ', self.firstname, ' ', self.lastname, '\r\n',
+#             'Username: ', self.username, '\r\n',
+#             'Email: ', self.email, '\r\n'
+#         ])
 
 
 class Post(db.Model):
