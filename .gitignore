@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Python-Api folder
+/python-api/__pycache__/*
+/python-api/static/__pycache__/*

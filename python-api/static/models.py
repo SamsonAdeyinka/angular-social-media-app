@@ -4,7 +4,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://alebaba:admin@localhost:3306/socialmedia'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://alebaba:admin@localhost/socialmedia'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECERT_KEY'] = 'Alebaba'
 
@@ -22,7 +22,8 @@ class Users(db.Model):
     def __repr__(self):
         return ''.join([
             'User: ', self.firstname, ' ', self.lastname, '\r\n',
-            'Email: ', self.email, ' ', self
+            'Username: ', self.username, '\r\n',
+            'Email: ', self.email, '\r\n'
         ])
 
 
@@ -35,8 +36,8 @@ class Post(db.Model):
 
     def __repr__(self):
         return ''.join([
-            'User: ', self.user_id.firstname, ' ', self.user_id.lastname,
-            'Post: ', self.body,
-            'Date: ', self.pub_date,
+            'User: ', self.user_id.firstname, ' ', self.user_id.lastname, '\r\n',
+            'Post: ', self.body, '\r\n',
+            'Date: ', self.pub_date, '\r\n',
             'Likes: ', self.likes
         ])

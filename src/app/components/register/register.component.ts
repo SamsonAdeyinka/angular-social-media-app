@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../users/user.model';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../users/user.service'
 
 @Component({
   selector: 'app-register',
@@ -11,23 +12,18 @@ export class RegisterComponent implements OnInit {
 
   user: User
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.resetForm();
   }
+// empty user input fields - Firstname, Lastname, Email, Username, Password
+  userModel = new User("", "", "", "", "")
 
-  resetForm(form?: NgForm) {
-    if (form != null) {
-      form.reset();
-      this.user = {
-        username: '',
-        email: '',
-        firstname: '',
-        lastname: '',
-        password: ''
-      }
-    }
+  onSubmit() {
+    console.log(this.userModel)
+    this.userService.registerUser(this.userModel)
+      .subscribe(data => console.log('success', data), error => console.error('error!', error)
+      )
   }
 
 }
