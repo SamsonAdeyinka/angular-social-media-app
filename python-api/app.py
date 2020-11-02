@@ -1,33 +1,30 @@
-from flask import render_template, request, jsonify, json
-from static.models import db, app, bcrypt
+from flask import render_template, request, jsonify, json, make_response
+from static.models import db, app
 from static.models import Users
 
-@app.route('/', methods=['POST', 'GET'])
-def getAllUsers():
-    user = Users.query.all()
-    for userinfo in user:
-        users = {
-            'User': userinfo.firstname + ' ' + userinfo.lastname,  
-            'Username': userinfo.email,
-            'Email': userinfo.email,
-            'Password': userinfo.password
-        }
-    return jsonify(users)
 
-@app.route('/register', methods=['POST'])
+@app.route('/register', methods=['POST', 'GET'])
 def registerUser():
-    if request == 'POST':
-        hashed_pw = bcrypt.generate_password_hashed(password.data)
+    req = request.get_json()
+    if Users.query.filter_by(email=req.get("email")).first():
+        return jsonify({"Message": "The user already exists"})
+
+    else:
         newUser = Users(
-            firstname=firstnaem.data,
-            lastname=lastname.data,
-            username=username.data,
-            email=email.data,
-            password=password.data
+            firstname=req.get("firstname"),
+            lastname=req.get("lastname"),
+            username=req.get("username"),
+            email=req.get("email"),
+            password=req.get("password")
         )
-        db.session.add(newUSer)
+        db.session.add(newUser)
         db.session.commit()
 
-@app.route('/login', methods)
+        return jsonify({"Message": "User has been added to the database"}), 200
+
+@app.route('/login', methods=['GET'])
+def login():
+    return "something"
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

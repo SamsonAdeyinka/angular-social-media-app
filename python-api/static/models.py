@@ -3,8 +3,10 @@ from datetime import datetime
 from flask import Flask
 
 app = Flask(__name__)
+# bcrypt = Bcrypt(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://alebaba:admin@localhost/socialmedia'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://alebaba:admin@localhost/socialmedia'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\Samso\\Documents\\Projects\\angular-social-media-app\\python-api\\static\\socialmedia.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECERT_KEY'] = 'Alebaba'
 
