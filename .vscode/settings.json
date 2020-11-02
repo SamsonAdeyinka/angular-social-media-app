@@ -1,7 +1,9 @@
 {
-    "python.pythonPath": "C:\\Users\\Samso\\.virtualenvs\\python-api-ShpqhKkq\\Scripts\\python.exe",
+    "python.pythonPath": "C:\\Users\\Samso\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
     "python.linting.pylintArgs": [
         "--load-plugins",
         "pylint-flask"
-    ]
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }

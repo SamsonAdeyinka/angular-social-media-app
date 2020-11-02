@@ -1,44 +1,34 @@
-{{ userModel | json }}
 <div class="reg-form">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <form class="form-scale" (ngSubmit)="onSubmit()" novalidate>
+        <form class="form-scale" novalidate>
             <div class="text-center mb-5">
                 <h1>Register Here</h1>
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="inputFirstname">Firstname</label>
-                    <input type="text" class="form-control" placeholder="Firstname" name="Firstname" required
-                        #firstname="ngModel" [(ngModel)]="userModel.Firstname" [class.is-invalid]="firstname.invalid && firstname.touched"
-                        [class.is-valid]="firstname.valid">
+                    <input type="text" class="form-control" placeholder="Firstname" name="Firstname" required>
                 </div>
                 <div class="form-group col-6">
                     <label for="inputLastname">Lastname</label>
-                    <input type="text" class="form-control" placeholder="Lastname" name="Lastname" required
-                        #lastname="ngModel" [(ngModel)]="userModel.Lastname" [class.is-invalid]="lastname.invalid && lastname.touched"
-                        [class.is-valid]="lastname.valid">
+                    <input type="text" class="form-control" placeholder="Lastname" name="Lastname" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" placeholder="Email" name="Email" required #email="ngModel"
-                    [(ngModel)]="userModel.Email" [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid">
+                <input type="email" class="form-control" placeholder="Email" name="Email" required>
             </div>
             <div class="form-group">
                 <label for="inputUsername">Username</label>
-                <input type="text" class="form-control" placeholder="Username" name="Username" pattern="" required
-                    #username="ngModel" [(ngModel)]="userModel.Username" [class.is-invalid]="username.invalid && username.touched"
-                    [class.is-valid]="username.valid">
+                <input type="text" class="form-control" placeholder="Username" name="Username" pattern="" required>
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" placeholder="Password" name="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}" required
-                    #password="ngModel" [(ngModel)]="userModel.Password" [class.is-invalid]="password.invalid && password.touched" [class.is-valid]="password.valid">
-                <div *ngIf="password.errors">
-                    <small class="text-danger" *ngIf="password.errors.pattern">
+                <input type="password" class="form-control" placeholder="Password" name="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}" required>
+                
+                    <small class="text-danger">
                         Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters!
                     </small>
-                </div>
             </div>
             <div class="form-inline">
                 <button type="submit" class="btn btn-primary">Register</button>
