@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 from datetime import datetime
 from flask import Flask
 
@@ -11,6 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECERT_KEY'] = 'Alebaba'
 
 db = SQLAlchemy(app)
+ma = Marshmallow(app)
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,15 +21,30 @@ class Users(db.Model):
     username = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user = db.relationship('Post', backref=db.backref('user', lazy=True))
 
     def __repr__(self):
         return ''.join([
             'User: ', self.firstname, ' ', self.lastname, '\r\n',
             'Username: ', self.username, '\r\n',
-            'Email: ', self.email, '\r\n'
+            'Email: ', self.email, '\r\n',
+            'Date Created', self.date_created, '\r\n'
         ])
+# User Schema
+class UserSchema(ma.Schema):
+    class Meta:
+        # fields to expose
+        fields = ('id', 'firstname', 'lastname', 'username', 'email', 'password', 'date_created', '_links')
+    # Smart Hyperlink
+    _links = ma.Hyperlinks({
+        "self": ma.URLFor("user_detail", values=dict(id="<id>")),
+        "collection": ma.URLFor("users"),
+    })
 
+# Init User Schema
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -43,3 +60,17 @@ class Post(db.Model):
             'Date: ', self.pub_date, '\r\n',
             'Likes: ', self.likes
         ])
+# Post Schema
+class PostSchema(ma.Schema):
+    class Meta:
+        # fields to expose
+        fields = ('id', 'body', 'like', 'pub_date', '_links')
+    # Smart Hyperlink
+    _links = ma.Hyperlinks({
+        "self": ma.URLFor("post_details", values=dict(id="<id>")),
+        "collection": ma.URLFor("posts"),
+    })
+
+# Init Post Schema    
+post_schema = PostSchema()
+posts_schema = PostSchema(many=True)

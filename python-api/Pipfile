@@ -12,6 +12,8 @@ flask-sqlalchemy = "*"
 pylint = "*"
 pymysql = "*"
 pylint-flask = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
 
 [requires]
 python_version = "3.9"

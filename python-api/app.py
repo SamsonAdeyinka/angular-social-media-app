@@ -4,10 +4,15 @@ from static.models import Users
 
 
 @app.route('/register', methods=['POST', 'GET'])
-def registerUser():
+def register():
     req = request.get_json()
-    if Users.query.filter_by(email=req.get("email")).first():
-        return jsonify({"Message": "The user already exists"})
+    user = Users.query.filter_by(email=req.get("email")).first()
+    if user:
+        response = jsonify({
+            "Message": "The user already exists",
+            "User": json.dumps(user, indent=2)
+        })
+        return response, 200
 
     else:
         newUser = Users(
@@ -20,11 +25,29 @@ def registerUser():
         db.session.add(newUser)
         db.session.commit()
 
-        return jsonify({"Message": "User has been added to the database"}), 200
+        response = jsonify({
+            "Message": "User has been added to the database",
+            "User": newUser
+        })
+        return response, 200
 
-@app.route('/login', methods=['GET'])
+
+@app.route('/login', methods=['POST', 'GET'])
 def login():
-    return "something"
+    req = request.get_json()
+    user = Users.query.filter_by(email=req.get('email')).first()
+    for row in user:
+        user = {
+            "id": row[0],
+            "firstname": row[1]
+        }
+        return jsonify(user)
+
+
+@app.route('/posts', methods=['GET'])
+def posts():
+    all_posts = Posts.query.all()
+    return "blah"
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
