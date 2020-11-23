@@ -1,20 +1,24 @@
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_login import LoginManager, UserMixin
+from flask_bcrypt import Bcrypt
 from datetime import datetime
-from flask import Flask
+from collections import OrderedDict
 
 app = Flask(__name__)
-# bcrypt = Bcrypt(app)
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://alebaba:admin@localhost/socialmedia'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\Samso\\Documents\\Projects\\angular-social-media-app\\python-api\\static\\socialmedia.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECERT_KEY'] = 'Alebaba'
+app.config['SECRET_KEY'] = 'Alebaba'
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
+login_manager = LoginManager(app)
+bcrypt = Bcrypt(app)
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(50), nullable=False)
     lastname = db.Column(db.String(50), nullable=False)
@@ -31,16 +35,22 @@ class Users(db.Model):
             'Email: ', self.email, '\r\n',
             'Date Created', self.date_created, '\r\n'
         ])
+    @login_manager.user_loader
+    def load_user(id):
+        return Users.query.get(int(id))
+        
 # User Schema
 class UserSchema(ma.Schema):
-    class Meta:
-        # fields to expose
-        fields = ('id', 'firstname', 'lastname', 'username', 'email', 'password', 'date_created', '_links')
     # Smart Hyperlink
     _links = ma.Hyperlinks({
         "self": ma.URLFor("user_detail", values=dict(id="<id>")),
-        "collection": ma.URLFor("users"),
+        "collection": ma.URLFor("users")
     })
+    class Meta:
+        # fields to expose
+        fields = ('id', 'firstname', 'lastname', 'username', 'email', 'password', 'date_created')
+        ordered = True
+    
 
 # Init User Schema
 user_schema = UserSchema()
