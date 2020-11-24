@@ -5,8 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 // RoutingComponent imported - an array of routing components
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProfileSidebarComponent } from './components/home/profile-sidebar/profile-sidebar.component';
-import { TimelineComponent } from './components/home/timeline/timeline.component';
+
 
 
 
@@ -14,8 +13,6 @@ import { TimelineComponent } from './components/home/timeline/timeline.component
   declarations: [
     AppComponent,
     RoutingComponents,
-    ProfileSidebarComponent,
-    TimelineComponent
   ],
   imports: [
     BrowserModule,

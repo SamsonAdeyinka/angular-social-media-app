@@ -1,1 +1,5 @@
+<button (click)="getUser()">Get Users</button>
+<div *ngFor ="let users of user | async">
+    {{ users | json }}
+</div>
 <router-outlet></router-outlet>

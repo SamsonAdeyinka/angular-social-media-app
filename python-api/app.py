@@ -1,17 +1,20 @@
 from flask import render_template, request, jsonify, json, redirect, url_for
 from flask_login import login_user, login_required
 from static.models import db, app, bcrypt, login_manager
-from static.models import Users, user_schema, Post, post_schema
+from static.models import Users, user_schema, users_schema, Post, post_schema
 
 
 @app.route('/api/users')
 def users():
-    all_users = Users.all()
-    return user_schema.dump(all_users)
+    all_users = Users.query.all()
+    response = jsonify({
+        "Users": users_schema.dump(all_users)
+    })
+    return response
 
 @app.route('/api/users/<id>')
 def user_detail(id):
-    user = Users.get(id)
+    user = Users.query.get(id)
     return user_schema.dump(user)
 
 @app.route('/register', methods=['POST'])
